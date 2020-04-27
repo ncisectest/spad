@@ -247,7 +247,12 @@ public class IssueBookForm extends javax.swing.JFrame {
 
         String IFDate = IYear.getText() + "-" + IMonth.getText() + "-" + IDate.getText();
         String RFDate = RYear.getText() + "-" + RMonth.getText() + "-" + RDate.getText();
-        System.out.println(IFDate);
+
+        Calendar IFCalDate = Calendar.getInstance();
+        Calendar RFCalDate = Calendar.getInstance();
+
+        IFCalDate.set(Integer.parseInt(IYear.getText()), Integer.parseInt(IMonth.getText())-1, Integer.parseInt(IDate.getText()), 0, 0);
+        RFCalDate.set(Integer.parseInt(RYear.getText()), Integer.parseInt(RMonth.getText())-1, Integer.parseInt(RDate.getText()), 0, 0);
 
         //Date IFDDate = cal.getDate();
         if (TransBookDao.BookValidate(BookID.getText()) && TransBookDao.UserValidate(UserID.getText())) {
@@ -255,7 +260,9 @@ public class IssueBookForm extends javax.swing.JFrame {
             if (TransBookDao.Check(UserIDV) == 0) {
                 JOptionPane.showMessageDialog(IssueBookForm.this, "User has already Issued Maximum No of Books", "Issue Error!", JOptionPane.ERROR_MESSAGE);
             } else {
-                if (TransBookDao.IssueBook(BookIDV, UserIDV, IFDate, RFDate) != 0) {
+                if (RFCalDate.before(IFCalDate)) {
+                    JOptionPane.showMessageDialog(IssueBookForm.this, "Return date cannot be before Issue date.", "Issuing Book Error!", JOptionPane.ERROR_MESSAGE);
+                } else if (TransBookDao.IssueBook(BookIDV, UserIDV, IFDate, RFDate) != 0) {
 
                     JOptionPane.showMessageDialog(IssueBookForm.this, "The Book  is Issued!", "Book Issued!", JOptionPane.ERROR_MESSAGE);
                     BookID.setText("");
@@ -312,7 +319,7 @@ public class IssueBookForm extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

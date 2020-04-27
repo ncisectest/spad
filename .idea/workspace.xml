@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff8085d0-fd59-4835-8638-55629142c688" name="Default Changelist" comment="Updated DB config.">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mainlibrary/UserForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mainlibrary/UserForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mainlibrary/UsersDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mainlibrary/UsersDao.java" afterDir="false" />
-    </list>
+    <list default="true" id="ff8085d0-fd59-4835-8638-55629142c688" name="Default Changelist" comment="Updated DB config." />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,37 +18,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mainlibrary/UsersDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="53" column="45" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/mainlibrary/UserForm.java">
+        <entry file="file://$PROJECT_DIR$/src/mainlibrary/IssueBookForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="236" column="63" selection-start-line="236" selection-start-column="63" selection-end-line="236" selection-end-column="63" />
+            <state relative-caret-position="317">
+              <caret line="50" column="26" lean-forward="true" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
               <folding>
-                <element signature="e#2395#2396#0" expanded="true" />
-                <element signature="e#2455#2456#0" expanded="true" />
-                <element signature="e#2615#2616#0" expanded="true" />
-                <element signature="e#2675#2676#0" expanded="true" />
-                <element signature="e#2831#2832#0" expanded="true" />
-                <element signature="e#2887#2888#0" expanded="true" />
-                <element signature="e#3046#3047#0" expanded="true" />
-                <element signature="e#3105#3106#0" expanded="true" />
-                <element signature="e#3375#3376#0" expanded="true" />
-                <element signature="e#3435#3436#0" expanded="true" />
-                <element signature="e#3629#3630#0" expanded="true" />
-                <element signature="e#3689#3690#0" expanded="true" />
-                <element signature="e#3955#3956#0" expanded="true" />
-                <element signature="e#4012#4013#0" expanded="true" />
-                <element signature="e#15269#15270#0" expanded="true" />
-                <element signature="e#15332#15333#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1489#1519#0" expanded="true" />
+                <element signature="e#3350#3351#0" expanded="true" />
+                <element signature="e#3410#3411#0" expanded="true" />
+                <element signature="e#3676#3677#0" expanded="true" />
+                <element signature="e#3736#3737#0" expanded="true" />
+                <element signature="e#3894#3895#0" expanded="true" />
+                <element signature="e#3952#3953#0" expanded="true" />
+                <element signature="e#4110#4111#0" expanded="true" />
+                <element signature="e#4168#4169#0" expanded="true" />
+                <element signature="e#4426#4427#0" expanded="true" />
+                <element signature="e#4484#4485#0" expanded="true" />
+                <element signature="e#4872#4873#0" expanded="true" />
+                <element signature="e#4929#4930#0" expanded="true" />
+                <element signature="e#5086#5087#0" expanded="true" />
+                <element signature="e#5143#5144#0" expanded="true" />
+                <element signature="e#18123#18124#0" expanded="true" />
+                <element signature="e#18191#18192#0" expanded="true" />
               </folding>
             </state>
           </provider>
