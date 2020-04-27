@@ -20,10 +20,13 @@ public class UsersDao {
         boolean status = false;
         try {
             Connection con = DB.getConnection();
-            String select = "select * from Users where UserName= '" + name + "' and UserPass='"+ password +"'";
-            Statement selectStatement = con.createStatement();
-            ResultSet rs = selectStatement.executeQuery(select);
+            PreparedStatement ps = con.prepareStatement("select * from Users where UserName=? and UserPass=?");
+            ps.setString(1, name);
+            ps.setString(2, password);
+
+            ResultSet rs = ps.executeQuery();
             status = rs.next();
+
             con.close();
         } catch (Exception e) {
             System.out.println(e);
@@ -35,10 +38,12 @@ public class UsersDao {
         boolean status = false;
         try {
             Connection con = DB.getConnection();
-            String select = "select * from Users where UserName= '" + UserName +"'";
-            Statement selectStatement = con.createStatement();
-            ResultSet rs = selectStatement.executeQuery(select);
+            PreparedStatement ps = con.prepareStatement("select * from Users where UserName=?");
+            ps.setString(1, UserName);
+
+            ResultSet rs = ps.executeQuery();
             status = rs.next();
+
             con.close();
         } catch (Exception e) {
             System.out.println(e);
@@ -52,7 +57,6 @@ public class UsersDao {
 
         int status = 0;
         try {
-
             Connection con = DB.getConnection();
             PreparedStatement ps = con.prepareStatement("insert into Users(UserPass,RegDate,UserName,Email) values(?,?,?,?)");
             ps.setString(1, UserPass);

@@ -7,7 +7,6 @@ public class LibrarianDao {
     public static int save(String name, String password, String email, String address, String city, String contact) {
         int status = 0;
         try {
-
             Connection con = DB.getConnection();
             PreparedStatement ps = con.prepareStatement("insert into librarian(name,password,email,address,city,contact) values(?,?,?,?,?,?)");
             ps.setString(1, name);
@@ -42,11 +41,13 @@ public class LibrarianDao {
         boolean status = false;
         try {
             Connection con = DB.getConnection();
-            String select = "select * from Librarian where UserName= '" + name + "' and Password='"+ password +"'";
-            Statement selectStatement = con.createStatement();
-            ResultSet rs = selectStatement.executeQuery(select);
-          
+            PreparedStatement ps = con.prepareStatement("select * from Librarian where UserName=? and Password=?");
+            ps.setString(1, name);
+            ps.setString(2, password);
+
+            ResultSet rs = ps.executeQuery();
             status = rs.next();
+
             con.close();
         } catch (Exception e) {
             System.out.println(e);
