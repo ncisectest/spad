@@ -229,8 +229,12 @@ public class UserForm extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String User = UserName.getText();
-        if (UsersDao.CheckIfAlready(User)) {
-            JOptionPane.showMessageDialog(UserForm.this, "UserName already taken!", "Adding new User Error!", JOptionPane.ERROR_MESSAGE);
+        String EmailAddress = Email.getText();
+
+        if (UsersDao.CheckIfUserNameAlready(User)) {
+            JOptionPane.showMessageDialog(UserForm.this, "UserName is already taken!", "Adding new User Error!", JOptionPane.ERROR_MESSAGE);
+        } else if (UsersDao.CheckIfEmailAlready(EmailAddress)) {
+            JOptionPane.showMessageDialog(UserForm.this, "Email is already taken!", "Adding new User Error!", JOptionPane.ERROR_MESSAGE);
         } else {
             User = UserName.getText();
             String UserPass = String.valueOf(Password.getPassword());

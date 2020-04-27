@@ -34,7 +34,7 @@ public class UsersDao {
         return status;
     }
 
-    public static boolean CheckIfAlready(String UserName) {
+    public static boolean CheckIfUserNameAlready(String UserName) {
         boolean status = false;
         try {
             Connection con = DB.getConnection();
@@ -49,7 +49,23 @@ public class UsersDao {
             System.out.println(e);
         }
         return status;
+    }
 
+    public static boolean CheckIfEmailAlready(String EmailAddress) {
+        boolean status = false;
+        try {
+            Connection con = DB.getConnection();
+            PreparedStatement ps = con.prepareStatement("select * from Users where Email=?");
+            ps.setString(1, EmailAddress);
+
+            ResultSet rs = ps.executeQuery();
+            status = rs.next();
+
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return status;
     }
 
     public static int AddUser(String User, String UserPass, String UserEmail, String Date) {
