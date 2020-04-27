@@ -30,8 +30,8 @@ public class DB {
             Class.forName("com.mysql.jdbc.Driver");
             String connection = props.getProperty("connection");
             con = DriverManager.getConnection(connection, props);
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+            System.out.println(e);
         } catch (Exception e) {
             System.out.println(e);
         }
