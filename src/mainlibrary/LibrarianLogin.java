@@ -168,7 +168,7 @@ public class LibrarianLogin extends javax.swing.JFrame {
         Uname = username.getText();
         String Pass;
         Pass = String.valueOf(password.getPassword());
-        System.out.println(Uname + " " + Pass);
+
         if (LibrarianDao.validate(Uname, Pass)) {
 
             this.dispose();
