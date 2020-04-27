@@ -254,15 +254,13 @@ public class IssueBookForm extends javax.swing.JFrame {
         IFCalDate.set(Integer.parseInt(IYear.getText()), Integer.parseInt(IMonth.getText())-1, Integer.parseInt(IDate.getText()), 0, 0);
         RFCalDate.set(Integer.parseInt(RYear.getText()), Integer.parseInt(RMonth.getText())-1, Integer.parseInt(RDate.getText()), 0, 0);
 
-        //Date IFDDate = cal.getDate();
-        if (TransBookDao.BookValidate(BookID.getText()) && TransBookDao.UserValidate(UserID.getText())) {
-
+        if (RFCalDate.before(IFCalDate)) {
+            JOptionPane.showMessageDialog(IssueBookForm.this, "Return date cannot be before Issue date.", "Issuing Book Error!", JOptionPane.ERROR_MESSAGE);
+        } else if (TransBookDao.BookValidate(BookID.getText()) && TransBookDao.UserValidate(UserID.getText())) {
             if (TransBookDao.Check(UserIDV) == 0) {
                 JOptionPane.showMessageDialog(IssueBookForm.this, "User has already Issued Maximum No of Books", "Issue Error!", JOptionPane.ERROR_MESSAGE);
             } else {
-                if (RFCalDate.before(IFCalDate)) {
-                    JOptionPane.showMessageDialog(IssueBookForm.this, "Return date cannot be before Issue date.", "Issuing Book Error!", JOptionPane.ERROR_MESSAGE);
-                } else if (TransBookDao.IssueBook(BookIDV, UserIDV, IFDate, RFDate) != 0) {
+                if (TransBookDao.IssueBook(BookIDV, UserIDV, IFDate, RFDate) != 0) {
 
                     JOptionPane.showMessageDialog(IssueBookForm.this, "The Book  is Issued!", "Book Issued!", JOptionPane.ERROR_MESSAGE);
                     BookID.setText("");
@@ -271,7 +269,6 @@ public class IssueBookForm extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(IssueBookForm.this, "Unable to Issue Book!", "Issuing Book Error!", JOptionPane.ERROR_MESSAGE);
                 }
             }
-
         } else {
             if (TransBookDao.UserValidate(UserID.getText())) {
                 JOptionPane.showMessageDialog(IssueBookForm.this, "The Book  is NOT available in Library Database!", "Issuing Book Error!", JOptionPane.ERROR_MESSAGE);
@@ -280,10 +277,7 @@ public class IssueBookForm extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(IssueBookForm.this, "The Book  and User are NOT available in Library Database!", "Issuing Book Error!", JOptionPane.ERROR_MESSAGE);
             }
-
         }
-        //  if(IssueBookDao.)
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
