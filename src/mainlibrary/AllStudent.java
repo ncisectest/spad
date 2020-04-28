@@ -32,11 +32,15 @@ public class AllStudent extends javax.swing.JFrame {
         initComponents();
         DefaultTableModel model;
         model = (DefaultTableModel) jTable1.getModel();
-        // String Data[][]=null;
-        //  String Column[]=null;
-        try (Connection Con = DB.getConnection()) {
-            PreparedStatement ps = Con.prepareStatement("select * from Users", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            ResultSet rs = ps.executeQuery();
+
+        Connection Con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            Con = DB.getConnection();
+            ps = Con.prepareStatement("select * from Users", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            rs = ps.executeQuery();
 
             ResultSetMetaData rsmd = rs.getMetaData();
 
@@ -50,10 +54,17 @@ public class AllStudent extends javax.swing.JFrame {
                 }
                 model.addRow(Row);
             }
-
-            Con.close();
         } catch (Exception e) {
             System.out.println(e);
+        } finally {
+            try {
+                rs.close();
+                ps.close();
+                Con.close();
+            }
+            catch (Exception e) {
+                /* ignored */
+            }
         }
     }
 
@@ -245,13 +256,17 @@ public class AllStudent extends javax.swing.JFrame {
             model.removeRow(model.getRowCount() - 1);
         }
         if (NameRadio.isSelected()) {
-            // String Data[][]=null;
-            //  String Column[]=null;
             String Search = "%" + SearchField.getText() + "%";
-            try (Connection Con = DB.getConnection()) {
-                PreparedStatement ps = Con.prepareStatement("select * from Users where UserName like ?", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            Connection Con = null;
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+
+            try {
+                Con = DB.getConnection();
+                ps = Con.prepareStatement("select * from Users where UserName like ?", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
                 ps.setString(1, Search);
-                ResultSet rs = ps.executeQuery();
+                rs = ps.executeQuery();
 
                 ResultSetMetaData rsmd = rs.getMetaData();
 
@@ -279,20 +294,33 @@ public class AllStudent extends javax.swing.JFrame {
                     NoRow[5] = "";
                     NoRow[6] = "";
                     model.addRow(NoRow);
-
                 }
 
-                Con.close();
             } catch (Exception e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    rs.close();
+                    ps.close();
+                    Con.close();
+                }
+                catch (Exception e) {
+                    /* ignored */
+                }
             }
         } else if (AuthorRadio.isSelected()) {
 
             String Search = "%" + SearchField.getText() + "%";
-            try (Connection Con = DB.getConnection()) {
-                PreparedStatement ps = Con.prepareStatement("select * from Users where Email like ?", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            Connection Con = null;
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+
+            try {
+                Con = DB.getConnection();
+                ps = Con.prepareStatement("select * from Users where Email like ?", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
                 ps.setString(1, Search);
-                ResultSet rs = ps.executeQuery();
+                rs = ps.executeQuery();
 
                 ResultSetMetaData rsmd = rs.getMetaData();
 
@@ -322,12 +350,19 @@ public class AllStudent extends javax.swing.JFrame {
                     model.addRow(NoRow);
 
                 }
-                Con.close();
             } catch (Exception e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    rs.close();
+                    ps.close();
+                    Con.close();
+                }
+                catch (Exception e) {
+                    /* ignored */
+                }
             }
         } else {
-
             JOptionPane.showMessageDialog(AllStudent.this, "Select Name or Email", "No Selection!", JOptionPane.ERROR_MESSAGE);
         }
 
@@ -350,9 +385,14 @@ public class AllStudent extends javax.swing.JFrame {
             model.removeRow(model.getRowCount() - 1);
         }
 
-        try (Connection Con = DB.getConnection()) {
-            PreparedStatement ps = Con.prepareStatement("select * from Users", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            ResultSet rs = ps.executeQuery();
+        Connection Con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            Con = DB.getConnection();
+            ps = Con.prepareStatement("select * from Users", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            rs = ps.executeQuery();
 
             ResultSetMetaData rsmd = rs.getMetaData();
 
@@ -367,9 +407,17 @@ public class AllStudent extends javax.swing.JFrame {
                 model.addRow(Row);
             }
 
-            Con.close();
         } catch (Exception e) {
             System.out.println(e);
+        } finally {
+            try {
+                rs.close();
+                ps.close();
+                Con.close();
+            }
+            catch (Exception e) {
+                /* ignored */
+            }
         }
     }//GEN-LAST:event_ALLActionPerformed
 
