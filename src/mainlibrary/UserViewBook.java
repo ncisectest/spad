@@ -36,28 +36,20 @@ public class UserViewBook extends javax.swing.JFrame {
         initComponents();
         DefaultTableModel model;
         model = (DefaultTableModel) jTable1.getModel();
-        // String Data[][]=null;
-        //  String Column[]=null;
-        try (Connection Con = DB.getConnection()) {
-            PreparedStatement ps = Con.prepareStatement("select Books.BookID, Books.BookName,Books.Genre,Books.Author,Books.Publisher, Books.Row,Books.Shelf, IssuedBook.UserID from Books left outer join IssuedBook on Books.BookID= IssuedBook.BookID;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            ResultSet rs = ps.executeQuery();
+
+        Connection Con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            Con = DB.getConnection();
+            ps = Con.prepareStatement("select Books.BookID, Books.BookName,Books.Genre,Books.Author,Books.Publisher, Books.Row,Books.Shelf, IssuedBook.UserID from Books left outer join IssuedBook on Books.BookID= IssuedBook.BookID;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            rs = ps.executeQuery();
 
             ResultSetMetaData rsmd = rs.getMetaData();
 
             int colnum = rsmd.getColumnCount();
 
-            /*   Column = new String[colnum];
-            for(int i=1;i<=colnum;i++){
-               Column[i-1]=rsmd.getColumnClassName(i);
-                }
-            rs.last();
-            
-            int rows=rs.getRow();
-            rs.beforeFirst();
-            
-            String[][] data = new String[rows][colnum];
-            
-            int count=0; */
             String Row[];
             String Check = "";
             Row = new String[colnum];
@@ -73,16 +65,20 @@ public class UserViewBook extends javax.swing.JFrame {
                     } else {
                         Row[i - 1] = rs.getString(i);
                     }
-
                 }
                 model.addRow(Row);
-
             }
-
-            //count++;
-            Con.close();
         } catch (Exception e) {
             System.out.println(e);
+        } finally {
+            try {
+                rs.close();
+                ps.close();
+                Con.close();
+            }
+            catch (Exception e) {
+                /* ignored */
+            }
         }
     }
 
@@ -275,19 +271,22 @@ public class UserViewBook extends javax.swing.JFrame {
             model.removeRow(model.getRowCount() - 1);
         }
         if (NameRadio.isSelected()) {
-            // String Data[][]=null;
-            //  String Column[]=null;
             String Search = "%" + SearchField.getText() + "%";
-            try (Connection Con = DB.getConnection()) {
-                PreparedStatement ps = Con.prepareStatement("select A.BookID, A.BookName,A.Genre,A.Author,A.Publisher, A.Row,A.Shelf, IssuedBook.UserID from (select * from Books where BookName like ?) as A left outer join IssuedBook on A.BookID= IssuedBook.BookID", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            Connection Con = null;
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+
+            try {
+                Con = DB.getConnection();
+                ps = Con.prepareStatement("select A.BookID, A.BookName,A.Genre,A.Author,A.Publisher, A.Row,A.Shelf, IssuedBook.UserID from (select * from Books where BookName like ?) as A left outer join IssuedBook on A.BookID= IssuedBook.BookID", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
                 ps.setString(1, Search);
-                ResultSet rs = ps.executeQuery();
+                rs = ps.executeQuery();
 
                 ResultSetMetaData rsmd = rs.getMetaData();
 
                 int colnum = rsmd.getColumnCount();
 
-                //code here
                 String Row[];
                 Row = new String[colnum];
                 while (rs.next()) {
@@ -302,16 +301,12 @@ public class UserViewBook extends javax.swing.JFrame {
                                 }
                                 Row[i - 1] = "Issued";
                                 model.addRow(Row);
-
                             }
-
                             System.out.println(rs.getString(i));
                         } else {
                             Row[i - 1] = rs.getString(i);
                         }
-
                     }
-
                 }
                 int rowcount = model.getRowCount();
                 System.out.println(rowcount);
@@ -326,29 +321,36 @@ public class UserViewBook extends javax.swing.JFrame {
                     NoRow[5] = "";
                     NoRow[6] = "";
                     model.addRow(NoRow);
-
                 }
-
-                //count++;
-                Con.close();
             } catch (Exception e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    rs.close();
+                    ps.close();
+                    Con.close();
+                }
+                catch (Exception e) {
+                    /* ignored */
+                }
             }
         } else if (AuthorRadio.isSelected()) {
-
-            // String Data[][]=null;
-            //  String Column[]=null;
             String Search = "%" + SearchField.getText() + "%";
-            try (Connection Con = DB.getConnection()) {
-                PreparedStatement ps = Con.prepareStatement("select A.BookID, A.BookName,A.Genre,A.Author,A.Publisher, A.Row,A.Shelf, IssuedBook.UserID from (select * from Books where Author like ?) as A left outer join IssuedBook on A.BookID= IssuedBook.BookID", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            Connection Con = null;
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+
+            try {
+                Con = DB.getConnection();
+                ps = Con.prepareStatement("select A.BookID, A.BookName,A.Genre,A.Author,A.Publisher, A.Row,A.Shelf, IssuedBook.UserID from (select * from Books where Author like ?) as A left outer join IssuedBook on A.BookID= IssuedBook.BookID", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
                 ps.setString(1, Search);
-                ResultSet rs = ps.executeQuery();
+                rs = ps.executeQuery();
 
                 ResultSetMetaData rsmd = rs.getMetaData();
 
                 int colnum = rsmd.getColumnCount();
 
-                //code here
                 String Row[];
                 Row = new String[colnum];
                 while (rs.next()) {
@@ -369,7 +371,6 @@ public class UserViewBook extends javax.swing.JFrame {
                             Row[i - 1] = rs.getString(i);
                         }
                     }
-
                 }
                 int rowcount = model.getRowCount();
                 System.out.println(rowcount);
@@ -384,16 +385,20 @@ public class UserViewBook extends javax.swing.JFrame {
                     NoRow[5] = "";
                     NoRow[6] = "";
                     model.addRow(NoRow);
-
                 }
-
-                //count++;
-                Con.close();
             } catch (Exception e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    rs.close();
+                    ps.close();
+                    Con.close();
+                }
+                catch (Exception e) {
+                    /* ignored */
+                }
             }
         } else {
-
             JOptionPane.showMessageDialog(UserViewBook.this, "Select Name or Author", "No Selection!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_SearchActionPerformed
@@ -426,6 +431,7 @@ public class UserViewBook extends javax.swing.JFrame {
         NameRadio.setSelected(false);
         DefaultTableModel model;
         model = (DefaultTableModel) jTable1.getModel();
+
         while (model.getRowCount() > 0) {
             model.removeRow(model.getRowCount() - 1);
         }
@@ -441,28 +447,20 @@ public class UserViewBook extends javax.swing.JFrame {
         if (NotIssued.isSelected()) {
             flag = 1;
         }
-        // String Data[][]=null;
-        //  String Column[]=null;
-        try (Connection Con = DB.getConnection()) {
-            PreparedStatement ps = Con.prepareStatement("select Books.BookID, Books.BookName,Books.Genre,Books.Author,Books.Publisher, Books.Row,Books.Shelf, IssuedBook.UserID from Books left outer join IssuedBook on Books.BookID= IssuedBook.BookID;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            ResultSet rs = ps.executeQuery();
+
+        Connection Con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            Con = DB.getConnection();
+            ps = Con.prepareStatement("select Books.BookID, Books.BookName,Books.Genre,Books.Author,Books.Publisher, Books.Row,Books.Shelf, IssuedBook.UserID from Books left outer join IssuedBook on Books.BookID= IssuedBook.BookID;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            rs = ps.executeQuery();
 
             ResultSetMetaData rsmd = rs.getMetaData();
 
             int colnum = rsmd.getColumnCount();
 
-            /*   Column = new String[colnum];
-            for(int i=1;i<=colnum;i++){
-               Column[i-1]=rsmd.getColumnClassName(i);
-                }
-            rs.last();
-            
-            int rows=rs.getRow();
-            rs.beforeFirst();
-            
-            String[][] data = new String[rows][colnum];
-            
-            int count=0; */
             String Row[];
             String Check = "";
             Row = new String[colnum];
@@ -487,11 +485,17 @@ public class UserViewBook extends javax.swing.JFrame {
                 }
 
             }
-
-            //count++;
-            Con.close();
         } catch (Exception e) {
             System.out.println(e);
+        } finally {
+            try {
+                rs.close();
+                ps.close();
+                Con.close();
+            }
+            catch (Exception e) {
+                /* ignored */
+            }
         }
     }//GEN-LAST:event_ShowALLActionPerformed
 
