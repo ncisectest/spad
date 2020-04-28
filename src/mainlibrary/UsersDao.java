@@ -18,52 +18,88 @@ public class UsersDao {
 
     public static boolean validate(String name, String password) {
         boolean status = false;
+
+        Connection Con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
         try {
-            Connection con = DB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select * from Users where UserName=? and UserPass=?");
+            Con = DB.getConnection();
+            ps = Con.prepareStatement("select * from Users where UserName=? and UserPass=?");
             ps.setString(1, name);
             ps.setString(2, password);
 
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             status = rs.next();
-
-            con.close();
         } catch (Exception e) {
             System.out.println(e);
+        } finally {
+            try {
+                rs.close();
+                ps.close();
+                Con.close();
+            }
+            catch (Exception e) {
+                /* ignored */
+            }
         }
         return status;
     }
 
     public static boolean CheckIfUserNameAlready(String UserName) {
         boolean status = false;
+
+        Connection Con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
         try {
-            Connection con = DB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select * from Users where UserName=?");
+            Con = DB.getConnection();
+            ps = Con.prepareStatement("select * from Users where UserName=?");
             ps.setString(1, UserName);
 
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             status = rs.next();
-
-            con.close();
         } catch (Exception e) {
             System.out.println(e);
+        } finally {
+            try {
+                rs.close();
+                ps.close();
+                Con.close();
+            }
+            catch (Exception e) {
+                /* ignored */
+            }
         }
         return status;
     }
 
     public static boolean CheckIfEmailAlready(String EmailAddress) {
         boolean status = false;
+
+        Connection Con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
         try {
-            Connection con = DB.getConnection();
-            PreparedStatement ps = con.prepareStatement("select * from Users where Email=?");
+            Con = DB.getConnection();
+            ps = Con.prepareStatement("select * from Users where Email=?");
             ps.setString(1, EmailAddress);
 
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             status = rs.next();
-
-            con.close();
         } catch (Exception e) {
             System.out.println(e);
+        } finally {
+            try {
+                rs.close();
+                ps.close();
+                Con.close();
+            }
+            catch (Exception e) {
+                /* ignored */
+            }
         }
         return status;
     }
@@ -72,20 +108,30 @@ public class UsersDao {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
         int status = 0;
+
+        Connection Con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
         try {
-            Connection con = DB.getConnection();
-            PreparedStatement ps = con.prepareStatement("insert into Users(UserPass,RegDate,UserName,Email) values(?,?,?,?)");
+            Con = DB.getConnection();
+            ps = Con.prepareStatement("insert into Users(UserPass,RegDate,UserName,Email) values(?,?,?,?)");
             ps.setString(1, UserPass);
             ps.setString(2, Date);
             ps.setString(3, User);
             ps.setString(4, UserEmail);
             status = ps.executeUpdate();
-            con.close();
         } catch (Exception e) {
             System.out.println(e);
+        } finally {
+            try {
+                ps.close();
+                Con.close();
+            }
+            catch (Exception e) {
+                /* ignored */
+            }
         }
         return status;
-
     }
-
 }
