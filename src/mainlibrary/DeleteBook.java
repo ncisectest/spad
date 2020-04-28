@@ -126,15 +126,15 @@ public class DeleteBook extends javax.swing.JFrame {
 
             int BookIDV = Integer.parseInt(BookID.getText());
             if (TransBookDao.CheckIssuedBook(BookIDV)) {
-                JOptionPane.showMessageDialog(DeleteBook.this, "Book is Issued", "Error!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(DeleteBook.this, "Book is Issued.", "Error!", JOptionPane.ERROR_MESSAGE);
             } else {
                 if (BookDao.Delete(BookIDV) != 0) {
-                    JOptionPane.showMessageDialog(DeleteBook.this, "Book is Deleted", "Deleted!", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(DeleteBook.this, "Book is Deleted.", "Deleted!", JOptionPane.ERROR_MESSAGE);
                     UserName.setText("");
                     password.setText("");
                     BookID.setText("");
                 } else {
-                    JOptionPane.showMessageDialog(DeleteBook.this, "Unable to delete book", "Error!", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(DeleteBook.this, "Unable to delete book.", "Error!", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
