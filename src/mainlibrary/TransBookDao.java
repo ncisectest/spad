@@ -259,9 +259,7 @@ public class TransBookDao {
             ps = Con.prepareStatement("select * from Book_Count where UserID=?");
             ps.setInt(1, UserID);
             rs = ps.executeQuery();
-            status = rs.next();
             num = rs.getInt("BookNo");
-
         } catch (Exception e) {
             System.out.println(e);
         } finally {

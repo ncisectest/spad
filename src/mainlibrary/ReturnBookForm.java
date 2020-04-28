@@ -187,8 +187,6 @@ public class ReturnBookForm extends javax.swing.JFrame {
         BookIDV = Integer.parseInt(BookID.getText());
         int UserIDV;
         UserIDV = Integer.parseInt(UserID.getText());
-
-        String IFDate = IYear.getText() + "-" + IMonth.getText() + "-" + IDate.getText();
         
         if (TransBookDao.BookValidate(BookID.getText()) && TransBookDao.UserValidate(UserID.getText())) {
             if (TransBookDao.CheckIssuedUserBook(BookIDV, UserIDV)) {
