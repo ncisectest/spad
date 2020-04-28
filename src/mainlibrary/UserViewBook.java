@@ -248,7 +248,7 @@ public class UserViewBook extends javax.swing.JFrame {
 
     private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
         // TODO add your handling code here:
-        if (SearchField.getText() == "") {
+        if (SearchField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(UserViewBook.this, "Search Filed is Empty", "Search Error!", JOptionPane.ERROR_MESSAGE);
         }
 
