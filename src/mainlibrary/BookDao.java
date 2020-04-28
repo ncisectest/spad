@@ -52,7 +52,23 @@ public static int save(String callno,String name,String author,String publisher,
         
     }
 
-  
+
+    public static boolean CheckIfBookExist(String BookName, String Author) {
+        boolean status = false;
+        try (Connection con = DB.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("select * from Books where BookName=? and Author=?");
+            ps.setString(1, BookName);
+            ps.setString(2, Author);
+            ResultSet rs = ps.executeQuery();
+            status = rs.next();
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return status;
+    }
+
+
     public static int SaveBook(String BookN, String AuthorN, String PublisherN, String ShelfN, String RowN, String GenreN) {
             int status= 0;
         try(Connection con = DB.getConnection()) {

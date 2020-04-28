@@ -250,16 +250,20 @@ public class BookForm extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(BookForm.this, "Publisher is added!","Publisher Added!", JOptionPane.ERROR_MESSAGE);
             }
         }
-        if (BookDao.SaveBook(BookN, AuthorN, PublisherN, ShelfN, RowN, GenreN) != 0) {
-            JOptionPane.showMessageDialog(BookForm.this, "The Book is added!", "Book Added!", JOptionPane.ERROR_MESSAGE);
-            BookName.setText("");
-            Author.setText("");
-            Publisher.setText("");
-            Shelf.setText("");
-            Row.setText("");
-            Genre.setText("");
+        if (!BookDao.CheckIfBookExist(BookN, AuthorN)) {
+            if (BookDao.SaveBook(BookN, AuthorN, PublisherN, ShelfN, RowN, GenreN) != 0) {
+                JOptionPane.showMessageDialog(BookForm.this, "The Book is added!", "Book Added!", JOptionPane.ERROR_MESSAGE);
+                BookName.setText("");
+                Author.setText("");
+                Publisher.setText("");
+                Shelf.setText("");
+                Row.setText("");
+                Genre.setText("");
+            } else {
+                JOptionPane.showMessageDialog(BookForm.this, "The Book is not added!", "Adding Book Error!", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
-            JOptionPane.showMessageDialog(BookForm.this, "The Book is not added!", "Adding Book Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(BookForm.this, "The Book already exists!", "Adding Book Error!", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
