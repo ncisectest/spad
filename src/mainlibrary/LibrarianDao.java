@@ -39,7 +39,6 @@ public class LibrarianDao {
 
         Connection Con = null;
         PreparedStatement ps = null;
-        ResultSet rs = null;
 
         try {
             Con = DB.getConnection();
