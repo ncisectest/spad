@@ -256,13 +256,15 @@ public class IssueBookForm extends javax.swing.JFrame {
 
         if (RFCalDate.before(IFCalDate)) {
             JOptionPane.showMessageDialog(IssueBookForm.this, "Return date cannot be before Issue date.", "Issuing Book Error!", JOptionPane.ERROR_MESSAGE);
+        } else if (TransBookDao.CheckIssuedUserBook(BookIDV, UserIDV)) {
+            JOptionPane.showMessageDialog(IssueBookForm.this, "User has already Issued this Book.", "Issuing Book Error!", JOptionPane.ERROR_MESSAGE);
         } else if (TransBookDao.BookValidate(BookID.getText()) && TransBookDao.UserValidate(UserID.getText())) {
             if (TransBookDao.Check(UserIDV) == 0) {
-                JOptionPane.showMessageDialog(IssueBookForm.this, "User has already Issued Maximum No of Books", "Issue Error!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(IssueBookForm.this, "User has already Issued Maximum No of Books.", "Issuing Book Error!", JOptionPane.ERROR_MESSAGE);
             } else {
                 if (TransBookDao.IssueBook(BookIDV, UserIDV, IFDate, RFDate) != 0) {
 
-                    JOptionPane.showMessageDialog(IssueBookForm.this, "The Book  is Issued!", "Book Issued!", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(IssueBookForm.this, "The Book is Issued!", "Book Issued!", JOptionPane.ERROR_MESSAGE);
                     BookID.setText("");
                     UserID.setText("");
                 } else {

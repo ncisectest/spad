@@ -125,6 +125,21 @@ public class TransBookDao {
         return status;
     }
 
+    public static boolean CheckIssuedUserBook(int BookID, int UserID) {
+        boolean status = false;
+        try (Connection con = DB.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("select * from IssuedBook  where BookID=? and UserID=?");
+            ps.setInt(1, BookID);
+            ps.setInt(2, UserID);
+            ResultSet rs = ps.executeQuery();
+            status = rs.next();
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return status;
+    }
+
     public static int Check(int UserID) {
         boolean status = false;
         int num = 0;
