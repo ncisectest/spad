@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff8085d0-fd59-4835-8638-55629142c688" name="Default Changelist" comment="Updated DB config.">
-      <change beforePath="$PROJECT_DIR$/src/mainlibrary/TransBookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mainlibrary/TransBookDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mainlibrary/BookForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mainlibrary/BookForm.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,59 +21,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mainlibrary/IssueBookForm.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/mainlibrary/BookForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="259" column="80" lean-forward="true" selection-start-line="259" selection-start-column="80" selection-end-line="259" selection-end-column="80" />
+            <state relative-caret-position="181">
+              <caret line="251" column="9" lean-forward="true" selection-start-line="251" selection-start-column="9" selection-end-line="251" selection-end-column="9" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1524#1613#0" expanded="true" />
-                <element signature="method#initComponents#0;class#IssueBookForm#0" />
-                <element signature="e#3350#3351#0" expanded="true" />
-                <element signature="e#3410#3411#0" expanded="true" />
-                <element signature="e#3676#3677#0" expanded="true" />
-                <element signature="e#3736#3737#0" expanded="true" />
-                <element signature="e#3894#3895#0" expanded="true" />
-                <element signature="e#3952#3953#0" expanded="true" />
-                <element signature="e#4110#4111#0" expanded="true" />
-                <element signature="e#4168#4169#0" expanded="true" />
-                <element signature="e#4426#4427#0" expanded="true" />
-                <element signature="e#4484#4485#0" expanded="true" />
-                <element signature="e#4872#4873#0" expanded="true" />
-                <element signature="e#4929#4930#0" expanded="true" />
-                <element signature="e#5086#5087#0" expanded="true" />
-                <element signature="e#5143#5144#0" expanded="true" />
-                <element signature="e#18303#18304#0" expanded="true" />
-                <element signature="e#18371#18372#0" expanded="true" />
+                <element signature="e#2465#2466#0" expanded="true" />
+                <element signature="e#2525#2526#0" expanded="true" />
+                <element signature="e#2686#2687#0" expanded="true" />
+                <element signature="e#2747#2748#0" expanded="true" />
+                <element signature="e#2905#2906#0" expanded="true" />
+                <element signature="e#2963#2964#0" expanded="true" />
+                <element signature="e#3118#3119#0" expanded="true" />
+                <element signature="e#3173#3174#0" expanded="true" />
+                <element signature="e#3330#3331#0" expanded="true" />
+                <element signature="e#3387#3388#0" expanded="true" />
+                <element signature="e#3657#3658#0" expanded="true" />
+                <element signature="e#3717#3718#0" expanded="true" />
+                <element signature="e#3911#3912#0" expanded="true" />
+                <element signature="e#3971#3972#0" expanded="true" />
+                <element signature="e#4234#4235#0" expanded="true" />
+                <element signature="e#4291#4292#0" expanded="true" />
+                <element signature="e#15371#15372#0" expanded="true" />
+                <element signature="e#15434#15435#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mainlibrary/TransBookDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="146" column="89" lean-forward="true" selection-start-line="146" selection-start-column="57" selection-end-line="146" selection-end-column="89" />
+            <state relative-caret-position="272">
+              <caret line="140" column="5" lean-forward="true" selection-start-line="140" selection-start-column="5" selection-end-line="140" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mainlibrary/DeleteBook.java">
+        <entry file="file://$PROJECT_DIR$/src/mainlibrary/BookDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="122" column="44" lean-forward="true" selection-start-line="122" selection-start-column="44" selection-end-line="122" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mainlibrary/ReturnBookForm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="193" column="69" lean-forward="true" selection-start-line="193" selection-start-column="69" selection-end-line="193" selection-end-column="69" />
+            <state relative-caret-position="178">
+              <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -85,10 +76,11 @@
       <find>DriverManager</find>
       <find>FileInputStream</find>
       <find>CheckIfAlready</find>
-      <find>CheckIssuedBook</find>
       <find>System</find>
       <find>Check</find>
       <find>PreparedStatement</find>
+      <find>CheckIssuedBook</find>
+      <find>BookDao</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -113,6 +105,7 @@
         <option value="$PROJECT_DIR$/src/mainlibrary/ReturnBookForm.java" />
         <option value="$PROJECT_DIR$/src/mainlibrary/IssueBookForm.java" />
         <option value="$PROJECT_DIR$/src/mainlibrary/TransBookDao.java" />
+        <option value="$PROJECT_DIR$/src/mainlibrary/BookForm.java" />
       </list>
     </option>
   </component>
@@ -230,9 +223,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-1" width="1368" height="734" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4975" visible="true" weight="0.26363635" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4975" visible="true" weight="0.26363635" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -242,7 +234,7 @@
       <window_info id="Favorites" order="7" sideWeight="0.5025" side_tool="true" weight="0.26439393" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32885906" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924242" visible="true" weight="0.32885906" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924242" weight="0.32885906" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39932886" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -417,13 +409,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainlibrary/ReturnBookForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="193" column="69" lean-forward="true" selection-start-line="193" selection-start-column="69" selection-end-line="193" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mainlibrary/UserView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="106">
@@ -466,10 +451,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainlibrary/ReturnBookForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="193" column="69" lean-forward="true" selection-start-line="193" selection-start-column="69" selection-end-line="193" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainlibrary/BookDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/mainlibrary/TransBookDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="146" column="89" lean-forward="true" selection-start-line="146" selection-start-column="57" selection-end-line="146" selection-end-column="89" />
+        <state relative-caret-position="272">
+          <caret line="140" column="5" lean-forward="true" selection-start-line="140" selection-start-column="5" selection-end-line="140" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainlibrary/BookForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="251" column="9" lean-forward="true" selection-start-line="251" selection-start-column="9" selection-end-line="251" selection-end-column="9" />
+          <folding>
+            <element signature="e#2465#2466#0" expanded="true" />
+            <element signature="e#2525#2526#0" expanded="true" />
+            <element signature="e#2686#2687#0" expanded="true" />
+            <element signature="e#2747#2748#0" expanded="true" />
+            <element signature="e#2905#2906#0" expanded="true" />
+            <element signature="e#2963#2964#0" expanded="true" />
+            <element signature="e#3118#3119#0" expanded="true" />
+            <element signature="e#3173#3174#0" expanded="true" />
+            <element signature="e#3330#3331#0" expanded="true" />
+            <element signature="e#3387#3388#0" expanded="true" />
+            <element signature="e#3657#3658#0" expanded="true" />
+            <element signature="e#3717#3718#0" expanded="true" />
+            <element signature="e#3911#3912#0" expanded="true" />
+            <element signature="e#3971#3972#0" expanded="true" />
+            <element signature="e#4234#4235#0" expanded="true" />
+            <element signature="e#4291#4292#0" expanded="true" />
+            <element signature="e#15371#15372#0" expanded="true" />
+            <element signature="e#15434#15435#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

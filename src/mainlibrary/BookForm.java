@@ -243,11 +243,11 @@ public class BookForm extends javax.swing.JFrame {
         String RowN = Row.getText();
         String GenreN = Genre.getText();
 
-        if (BookDao.PublisherValidate(PublisherN)) {
-
-        } else {
-            if (BookDao.AddPublisher(PublisherN) != 0) {
-                ; // JOptionPane.showMessageDialog(BookForm.this, "Sorry, Publisher can't be added!","Publisher Error!", JOptionPane.ERROR_MESSAGE);
+        if (!BookDao.PublisherValidate(PublisherN)) {
+            if (BookDao.AddPublisher(PublisherN) == 0) {
+                JOptionPane.showMessageDialog(BookForm.this, "Sorry, Publisher can't be added!","Publisher Error!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(BookForm.this, "Publisher is added!","Publisher Added!", JOptionPane.ERROR_MESSAGE);
             }
         }
         if (BookDao.SaveBook(BookN, AuthorN, PublisherN, ShelfN, RowN, GenreN) != 0) {
