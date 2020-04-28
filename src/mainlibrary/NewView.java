@@ -36,28 +36,20 @@ public class NewView extends javax.swing.JFrame {
         initComponents();
         DefaultTableModel model;
         model = (DefaultTableModel) jTable1.getModel();
-        // String Data[][]=null;
-        //  String Column[]=null;
-        try (Connection Con = DB.getConnection()) {
-            PreparedStatement ps = Con.prepareStatement("select IssuedBook.BookID,IssuedBook.UserID,Books.BookName , IssuedBook.IssueDate, IssuedBook.ReturnDate from Books,IssuedBook where Books.BookID=IssuedBook.BookID;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            ResultSet rs = ps.executeQuery();
+
+        Connection Con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            Con = DB.getConnection();
+            ps = Con.prepareStatement("select IssuedBook.BookID,IssuedBook.UserID,Books.BookName , IssuedBook.IssueDate, IssuedBook.ReturnDate from Books,IssuedBook where Books.BookID=IssuedBook.BookID;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            rs = ps.executeQuery();
 
             ResultSetMetaData rsmd = rs.getMetaData();
 
             int colnum = rsmd.getColumnCount();
 
-            /*   Column = new String[colnum];
-            for(int i=1;i<=colnum;i++){
-               Column[i-1]=rsmd.getColumnClassName(i);
-                }
-            rs.last();
-            
-            int rows=rs.getRow();
-            rs.beforeFirst();
-            
-            String[][] data = new String[rows][colnum];
-            
-            int count=0; */
             String Row[];
             Row = new String[colnum];
             while (rs.next()) {
@@ -66,11 +58,17 @@ public class NewView extends javax.swing.JFrame {
                 }
                 model.addRow(Row);
             }
-
-            //count++;
-            Con.close();
         } catch (Exception e) {
             System.out.println(e);
+        } finally {
+            try {
+                rs.close();
+                ps.close();
+                Con.close();
+            }
+            catch (Exception e) {
+                /* ignored */
+            }
         }
     }
 
@@ -248,19 +246,22 @@ public class NewView extends javax.swing.JFrame {
             model.removeRow(model.getRowCount() - 1);
         }
         if (NameRadio.isSelected()) {
-            // String Data[][]=null;
-            //  String Column[]=null;
             String Search = "%" + SearchField.getText() + "%";
-            try (Connection Con = DB.getConnection()) {
-                PreparedStatement ps = Con.prepareStatement("select IssuedBook.BookID,IssuedBook.UserID,Books.BookName , IssuedBook.IssueDate, IssuedBook.ReturnDate from Books,IssuedBook where Books.BookID=IssuedBook.BookID and Books.BookName like ?", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            Connection Con = null;
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+
+            try {
+                Con = DB.getConnection();
+                ps = Con.prepareStatement("select IssuedBook.BookID,IssuedBook.UserID,Books.BookName , IssuedBook.IssueDate, IssuedBook.ReturnDate from Books,IssuedBook where Books.BookID=IssuedBook.BookID and Books.BookName like ?", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
                 ps.setString(1, Search);
-                ResultSet rs = ps.executeQuery();
+                rs = ps.executeQuery();
 
                 ResultSetMetaData rsmd = rs.getMetaData();
 
                 int colnum = rsmd.getColumnCount();
 
-                //code here
                 String Row[];
                 Row = new String[colnum];
                 while (rs.next()) {
@@ -282,31 +283,38 @@ public class NewView extends javax.swing.JFrame {
                     NoRow[5] = "";
                     NoRow[6] = "";
                     model.addRow(NoRow);
-
                 }
-
-                //count++;
-                Con.close();
             } catch (Exception e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    rs.close();
+                    ps.close();
+                    Con.close();
+                }
+                catch (Exception e) {
+                    /* ignored */
+                }
             }
         } else if (BookIDRadio.isSelected()) {
-
-            // String Data[][]=null;
-            //  String Column[]=null;
             String Search = SearchField.getText();
             int BookIDV;
             BookIDV = Integer.parseInt(Search);
-            try (Connection Con = DB.getConnection()) {
-                PreparedStatement ps = Con.prepareStatement("select IssuedBook.BookID,IssuedBook.UserID,Books.BookName , IssuedBook.IssueDate, IssuedBook.ReturnDate from Books,IssuedBook where Books.BookID=IssuedBook.BookID and IssuedBook.BookID=?", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            Connection Con = null;
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+
+            try {
+                Con = DB.getConnection();
+                ps = Con.prepareStatement("select IssuedBook.BookID,IssuedBook.UserID,Books.BookName , IssuedBook.IssueDate, IssuedBook.ReturnDate from Books,IssuedBook where Books.BookID=IssuedBook.BookID and IssuedBook.BookID=?", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
                 ps.setInt(1, BookIDV);
-                ResultSet rs = ps.executeQuery();
+                rs = ps.executeQuery();
 
                 ResultSetMetaData rsmd = rs.getMetaData();
 
                 int colnum = rsmd.getColumnCount();
 
-                //code here
                 String Row[];
                 Row = new String[colnum];
                 while (rs.next()) {
@@ -328,31 +336,38 @@ public class NewView extends javax.swing.JFrame {
                     NoRow[5] = "";
                     NoRow[6] = "";
                     model.addRow(NoRow);
-
                 }
-
-                //count++;
-                Con.close();
             } catch (Exception e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    rs.close();
+                    ps.close();
+                    Con.close();
+                }
+                catch (Exception e) {
+                    /* ignored */
+                }
             }
         } else if (UserIDRadio.isSelected()) {
-
-            // String Data[][]=null;
-            //  String Column[]=null;
             String Search = SearchField.getText();
             int UserIDV;
             UserIDV = Integer.parseInt(Search);
-            try (Connection Con = DB.getConnection()) {
-                PreparedStatement ps = Con.prepareStatement("select IssuedBook.BookID,IssuedBook.UserID,Books.BookName , IssuedBook.IssueDate, IssuedBook.ReturnDate from Books,IssuedBook where Books.BookID=IssuedBook.BookID and IssuedBook.UserID=?", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            Connection Con = null;
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+
+            try {
+                Con = DB.getConnection();
+                ps = Con.prepareStatement("select IssuedBook.BookID,IssuedBook.UserID,Books.BookName , IssuedBook.IssueDate, IssuedBook.ReturnDate from Books,IssuedBook where Books.BookID=IssuedBook.BookID and IssuedBook.UserID=?", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
                 ps.setInt(1, UserIDV);
-                ResultSet rs = ps.executeQuery();
+                rs = ps.executeQuery();
 
                 ResultSetMetaData rsmd = rs.getMetaData();
 
                 int colnum = rsmd.getColumnCount();
 
-                //code here
                 String Row[];
                 Row = new String[colnum];
                 while (rs.next()) {
@@ -376,11 +391,17 @@ public class NewView extends javax.swing.JFrame {
                     model.addRow(NoRow);
 
                 }
-
-                //count++;
-                Con.close();
             } catch (Exception e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    rs.close();
+                    ps.close();
+                    Con.close();
+                }
+                catch (Exception e) {
+                    /* ignored */
+                }
             }
         } else {
 
@@ -411,26 +432,20 @@ public class NewView extends javax.swing.JFrame {
         while (model.getRowCount() > 0) {
             model.removeRow(model.getRowCount() - 1);
         }
-        try (Connection Con = DB.getConnection()) {
-            PreparedStatement ps = Con.prepareStatement("select IssuedBook.BookID,IssuedBook.UserID,Books.BookName , IssuedBook.IssueDate, IssuedBook.ReturnDate from Books,IssuedBook where Books.BookID=IssuedBook.BookID;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            ResultSet rs = ps.executeQuery();
+
+        Connection Con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            Con = DB.getConnection();
+            ps = Con.prepareStatement("select IssuedBook.BookID,IssuedBook.UserID,Books.BookName , IssuedBook.IssueDate, IssuedBook.ReturnDate from Books,IssuedBook where Books.BookID=IssuedBook.BookID;", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            rs = ps.executeQuery();
 
             ResultSetMetaData rsmd = rs.getMetaData();
 
             int colnum = rsmd.getColumnCount();
 
-            /*   Column = new String[colnum];
-            for(int i=1;i<=colnum;i++){
-               Column[i-1]=rsmd.getColumnClassName(i);
-                }
-            rs.last();
-            
-            int rows=rs.getRow();
-            rs.beforeFirst();
-            
-            String[][] data = new String[rows][colnum];
-            
-            int count=0; */
             String Row[];
             Row = new String[colnum];
             while (rs.next()) {
@@ -439,11 +454,17 @@ public class NewView extends javax.swing.JFrame {
                 }
                 model.addRow(Row);
             }
-
-            //count++;
-            Con.close();
         } catch (Exception e) {
             System.out.println(e);
+        } finally {
+            try {
+                rs.close();
+                ps.close();
+                Con.close();
+            }
+            catch (Exception e) {
+                /* ignored */
+            }
         }
     }//GEN-LAST:event_ALLActionPerformed
 
