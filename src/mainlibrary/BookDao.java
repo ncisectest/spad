@@ -162,6 +162,7 @@ public static int save(String callno,String name,String author,String publisher,
         PreparedStatement ps = null;
 
         try {
+            Con = DB.getConnection();
             ps=Con.prepareStatement("DELETE FROM Books where BookID=?");
             ps.setInt(1,BookID);
             status=ps.executeUpdate();
