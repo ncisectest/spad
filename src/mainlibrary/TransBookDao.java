@@ -144,8 +144,8 @@ public class TransBookDao {
         boolean status = false;
         int num = 0;
         try (Connection con = DB.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("select * from Book_Count UserID=?");
-            ps.setInt(2, UserID);
+            PreparedStatement ps = con.prepareStatement("select * from Book_Count where UserID=?");
+            ps.setInt(1, UserID);
             ResultSet rs = ps.executeQuery();
             status = rs.next();
             num = rs.getInt("BookNo");
@@ -153,7 +153,7 @@ public class TransBookDao {
         } catch (Exception e) {
             System.out.println(e);
         }
-        if (num == 5) {
+        if (num >= 5) {
             return 0;
         } else {
             return 1;
