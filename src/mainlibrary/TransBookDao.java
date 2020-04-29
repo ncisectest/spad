@@ -4,35 +4,6 @@ import java.sql.*;
 import javax.swing.JTextField;
 
 public class TransBookDao {
-
-    public static boolean checkBook(String bookcallno) {
-        boolean status = false;
-
-        Connection Con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        try {
-            Con = DB.getConnection();
-            ps = Con.prepareStatement("select * from Books where BookID=?");
-            ps.setString(1, bookcallno);
-            rs = ps.executeQuery();
-            status = rs.next();
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally {
-            try {
-                rs.close();
-                ps.close();
-                Con.close();
-            }
-            catch (Exception e) {
-                /* ignored */
-            }
-        }
-        return status;
-    }
-
     public static boolean BookValidate(String BookID) {
         boolean status = false;
 
@@ -80,50 +51,6 @@ public class TransBookDao {
             try {
                 rs.close();
                 ps.close();
-                Con.close();
-            }
-            catch (Exception e) {
-                /* ignored */
-            }
-        }
-        return status;
-    }
-
-    public static int updatebook(String bookcallno) {
-        int status = 0;
-        int quantity = 0, issued = 0;
-
-        Connection Con = null;
-        PreparedStatement ps1 = null;
-        PreparedStatement ps2 = null;
-        ResultSet rs = null;
-
-        try {
-            Con = DB.getConnection();
-
-            ps1 = Con.prepareStatement("select quantity,issued from books where callno=?");
-            ps1.setString(1, bookcallno);
-            rs = ps1.executeQuery();
-            if (rs.next()) {
-                quantity = rs.getInt("quantity");
-                issued = rs.getInt("issued");
-            }
-
-            if (quantity > 0) {
-                ps2 = Con.prepareStatement("update books set quantity=?,issued=? where callno=?");
-                ps2.setInt(1, quantity - 1);
-                ps2.setInt(2, issued + 1);
-                ps2.setString(3, bookcallno);
-                status = ps2.executeUpdate();
-            }
-
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally {
-            try {
-                rs.close();
-                ps1.close();
-                ps2.close();
                 Con.close();
             }
             catch (Exception e) {
