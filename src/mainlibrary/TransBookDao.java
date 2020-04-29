@@ -247,7 +247,6 @@ public class TransBookDao {
     }
 
     public static int Check(int UserID) {
-        boolean status = false;
         int num = 0;
 
         Connection Con = null;
@@ -259,6 +258,7 @@ public class TransBookDao {
             ps = Con.prepareStatement("select * from Book_Count where UserID=?");
             ps.setInt(1, UserID);
             rs = ps.executeQuery();
+            boolean status = rs.next();
             num = rs.getInt("BookNo");
         } catch (Exception e) {
             System.out.println(e);
