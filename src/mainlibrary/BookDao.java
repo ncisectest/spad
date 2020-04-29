@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class BookDao {
+public final class BookDao {
     /**
      *
      * @param Publisher

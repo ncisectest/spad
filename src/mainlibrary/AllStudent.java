@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author bikash
  */
-public class AllStudent extends javax.swing.JFrame {
+public final class AllStudent extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewBook

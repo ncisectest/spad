@@ -14,7 +14,7 @@ import static mainlibrary.LibrarianSuccess.ThisLogined;
  *
  * @author bikash
  */
-public class BookForm extends javax.swing.JFrame {
+public final class BookForm extends javax.swing.JFrame {
 
     /**
      * Creates new form BookForm
@@ -279,7 +279,7 @@ public class BookForm extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

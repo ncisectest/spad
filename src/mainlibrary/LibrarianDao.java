@@ -2,7 +2,7 @@ package mainlibrary;
 
 import java.sql.*;
 
-public class LibrarianDao {
+public final class LibrarianDao {
     public static boolean validate(String name, String password) {
         boolean status = false;
 

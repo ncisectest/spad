@@ -18,7 +18,7 @@ import java.io.InputStream;
  *
  * @author bikash
  */
-public class DB {
+public final class DB {
     public static Connection getConnection() {
         Connection con = null;
         InputStream propsio = null;
