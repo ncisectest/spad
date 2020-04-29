@@ -25,7 +25,7 @@ public class BookDao {
         rs=ps.executeQuery();
         status=rs.next();
     } catch (Exception e) {
-        System.out.println(e);
+        java.util.logging.Logger.getLogger(BookDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
     } finally {
         try {
             rs.close();
@@ -38,7 +38,7 @@ public class BookDao {
     }
     return status;
 }
-    
+
     public static int AddPublisher( String Publisher)
     {
         int status= 0;
@@ -52,7 +52,7 @@ public class BookDao {
             ps.setString(1,Publisher);
             status=ps.executeUpdate();
 	    } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(BookDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 ps.close();
@@ -81,7 +81,7 @@ public class BookDao {
             rs = ps.executeQuery();
             status = rs.next();
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(BookDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 rs.close();
@@ -113,7 +113,7 @@ public class BookDao {
             ps.setString(6, RowN);
             status=ps.executeUpdate();
 	    } catch(Exception e){
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(BookDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 ps.close();
@@ -125,7 +125,7 @@ public class BookDao {
         }
 	return status;
     }
-    
+
     public static int Delete(int BookID) {
         int status= 0;
 
@@ -138,7 +138,7 @@ public class BookDao {
             ps.setInt(1,BookID);
             status=ps.executeUpdate();
 	    } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(BookDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 ps.close();

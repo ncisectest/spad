@@ -60,7 +60,7 @@ public class ViewBook extends javax.swing.JFrame {
                 model.addRow(Row);
             }
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(ViewBook.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 rs.close();
@@ -299,7 +299,7 @@ public class ViewBook extends javax.swing.JFrame {
                     model.addRow(NoRow);
                 }
             } catch (Exception e) {
-                System.out.println(e);
+                java.util.logging.Logger.getLogger(ViewBook.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
             } finally {
                 try {
                     rs.close();
@@ -349,7 +349,7 @@ public class ViewBook extends javax.swing.JFrame {
                     model.addRow(NoRow);
                 }
             } catch (Exception e) {
-                System.out.println(e);
+                java.util.logging.Logger.getLogger(ViewBook.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
             } finally {
                 try {
                     rs.close();
@@ -419,7 +419,7 @@ public class ViewBook extends javax.swing.JFrame {
             }
 
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(ViewBook.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 rs.close();

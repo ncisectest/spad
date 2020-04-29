@@ -32,7 +32,7 @@ public class UsersDao {
             rs = ps.executeQuery();
             status = rs.next();
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(UsersDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 rs.close();
@@ -61,7 +61,7 @@ public class UsersDao {
             rs = ps.executeQuery();
             status = rs.next();
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(UsersDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 rs.close();
@@ -90,7 +90,7 @@ public class UsersDao {
             rs = ps.executeQuery();
             status = rs.next();
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(UsersDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 rs.close();
@@ -121,7 +121,7 @@ public class UsersDao {
             ps.setString(4, UserEmail);
             status = ps.executeUpdate();
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(UsersDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 ps.close();

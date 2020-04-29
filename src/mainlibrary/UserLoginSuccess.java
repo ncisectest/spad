@@ -268,7 +268,7 @@ public class UserLoginSuccess extends javax.swing.JFrame {
             GetEmail = rs.getString("Email");
             GetUserID = rs.getString("UserID");
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(UserLoginSuccess.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 rs.close();

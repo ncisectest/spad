@@ -392,7 +392,7 @@ public class LibrarianSuccess extends javax.swing.JFrame {
             LibrarianID = rs.getString("LibrarianID");
             Email = rs.getString("Email");
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(LibrarianSuccess.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 rs.close();

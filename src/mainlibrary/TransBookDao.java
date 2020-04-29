@@ -18,7 +18,7 @@ public class TransBookDao {
             rs = ps.executeQuery();
             status = rs.next();
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(TransBookDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 rs.close();
@@ -46,7 +46,7 @@ public class TransBookDao {
             rs = ps.executeQuery();
             status = rs.next();
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(TransBookDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 rs.close();
@@ -76,7 +76,7 @@ public class TransBookDao {
             status = ps.executeUpdate();
 
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(TransBookDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 ps.close();
@@ -103,7 +103,7 @@ public class TransBookDao {
             status = ps.executeUpdate();
 
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(TransBookDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 ps.close();
@@ -130,7 +130,7 @@ public class TransBookDao {
             rs = ps.executeQuery();
             status = rs.next();
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(TransBookDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 rs.close();
@@ -159,7 +159,7 @@ public class TransBookDao {
             rs = ps.executeQuery();
             status = rs.next();
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(TransBookDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 rs.close();
@@ -188,7 +188,7 @@ public class TransBookDao {
             boolean status = rs.next();
             num = rs.getInt("BookNo");
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(TransBookDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 rs.close();

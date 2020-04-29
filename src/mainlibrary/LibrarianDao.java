@@ -19,7 +19,7 @@ public class LibrarianDao {
             rs = ps.executeQuery();
             status = rs.next();
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(LibrarianDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 rs.close();

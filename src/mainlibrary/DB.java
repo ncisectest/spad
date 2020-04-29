@@ -36,11 +36,11 @@ public class DB {
             String connection = props.getProperty("connection");
             con = DriverManager.getConnection(connection, props);
         } catch (IOException e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(DB.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } catch (SQLException e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(DB.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } catch (Exception e) {
-            System.out.println(e);
+            java.util.logging.Logger.getLogger(DB.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
             try {
                 propsio.close();
