@@ -344,7 +344,7 @@ public class LibrarianSuccess extends javax.swing.JFrame {
      */
     static void main(String args[]) {//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -391,8 +391,8 @@ public class LibrarianSuccess extends javax.swing.JFrame {
             Name = rs.getString("FullName");
             LibrarianID = rs.getString("LibrarianID");
             Email = rs.getString("Email");
-        } catch (Exception f) {
-            System.out.println(f);
+        } catch (Exception e) {
+            System.out.println(e);
         } finally {
             try {
                 rs.close();
