@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 import java.io.FileInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -20,9 +21,13 @@ import java.io.InputStream;
 public class DB {
     public static Connection getConnection() {
         Connection con = null;
-        try (InputStream input = new FileInputStream("/home/b14ckh34rt/Workspace/projects/spad/src/mainlibrary/config.properties")) {
+        InputStream propsio = null;
+        try {
+            File filePath = new File("src/mainlibrary/config.properties");
+            String canonicalFilePath = filePath.getCanonicalPath();
+            propsio = new FileInputStream(canonicalFilePath);
             Properties props = new Properties();
-            props.load(input);
+            props.load(propsio);
             props.put("useUnicode", "true");
             props.put("useServerPrepStmts", "false"); // use client-side prepared statement
             props.put("characterEncoding", "UTF-8"); // ensure charset is utf8 here
@@ -32,8 +37,17 @@ public class DB {
             con = DriverManager.getConnection(connection, props);
         } catch (IOException e) {
             System.out.println(e);
+        } catch (SQLException e) {
+            System.out.println(e);
         } catch (Exception e) {
             System.out.println(e);
+        } finally {
+            try {
+                propsio.close();
+            }
+            catch (Exception e) {
+                /* ignore */
+            }
         }
         return con;
     }
