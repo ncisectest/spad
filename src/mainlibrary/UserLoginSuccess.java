@@ -250,7 +250,6 @@ public class UserLoginSuccess extends javax.swing.JFrame {
         });
 
         String User = args[0];
-        String Pass = args[1];
 
         Connection Con = null;
         PreparedStatement ps = null;
@@ -258,9 +257,8 @@ public class UserLoginSuccess extends javax.swing.JFrame {
 
         try {
             Con = DB.getConnection();
-            ps = Con.prepareStatement("select * from Users where UserName=? and UserPass=?");
+            ps = Con.prepareStatement("select * from Users where UserName=?");
             ps.setString(1, User);
-            ps.setString(2, Pass);
             rs = ps.executeQuery();
             boolean status = rs.next();
             GetName = User;

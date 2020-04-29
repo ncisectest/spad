@@ -8,15 +8,47 @@ package mainlibrary;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
+import java.sql.SQLException;
 
 /**
  *
  * @author bikash
  */
-public class UsersDao {
 
-    public static boolean validate(String name, String password) {
+public class UsersDao {
+    public static String CreateHash(String password)  {
+        String argonhash = "";
+        String saltedhash = "";
+
+        try {
+            Argon2 sut = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2i,10,10);
+            argonhash = sut.hash(2, 65536, 1, password.toCharArray());
+            saltedhash = argonhash.substring(29);
+        } catch (Exception e) {
+            java.util.logging.Logger.getLogger(UsersDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
+        }
+        return saltedhash;
+    }
+
+    public static boolean VerifyHash(String vhash, String password) {
+        String finalhash = "";
+        String metahash = "$argon2i$v=19$m=65536,t=2,p=1";
+        finalhash = metahash+vhash;
+
+        boolean status = false;
+        try{
+            Argon2 argon2 = Argon2Factory.create();
+            status = argon2.verify(finalhash, password.toCharArray());
+        } catch (Exception e) {
+            java.util.logging.Logger.getLogger(UsersDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
+        }
+        return status;
+    }
+
+    public static boolean validate(String username, String password) {
+        String saltedhash = "";
         boolean status = false;
 
         Connection Con = null;
@@ -25,12 +57,19 @@ public class UsersDao {
 
         try {
             Con = DB.getConnection();
-            ps = Con.prepareStatement("select * from Users where UserName=? and UserPass=?");
-            ps.setString(1, name);
-            ps.setString(2, password);
-
+            ps = Con.prepareStatement("select UserPass from Users where UserName = ?");
+            ps.setString(1, username);
             rs = ps.executeQuery();
             status = rs.next();
+
+            if (status) {
+                saltedhash = rs.getString(1);
+            } else {
+                saltedhash = "none";
+            }
+        }
+        catch (SQLException e) {
+            java.util.logging.Logger.getLogger(UsersDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } catch (Exception e) {
             java.util.logging.Logger.getLogger(UsersDao.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
         } finally {
@@ -40,10 +79,10 @@ public class UsersDao {
                 Con.close();
             }
             catch (Exception e) {
-                /* ignored */
+                /* ignore */
             }
         }
-        return status;
+        return VerifyHash(saltedhash, password);
     }
 
     public static boolean CheckIfUserNameAlready(String UserName) {
@@ -115,7 +154,7 @@ public class UsersDao {
         try {
             Con = DB.getConnection();
             ps = Con.prepareStatement("insert into Users(UserPass,RegDate,UserName,Email) values(?,?,?,?)");
-            ps.setString(1, UserPass);
+            ps.setString(1, CreateHash(UserPass));
             ps.setString(2, Date);
             ps.setString(3, User);
             ps.setString(4, UserEmail);
